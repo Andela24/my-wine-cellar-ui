@@ -12,6 +12,8 @@ export default function Header() {
             <Nav.Link href="users">Users</Nav.Link>
             <Nav.Link href="wineries">Wineries</Nav.Link>
             <Nav.Link href="bottles">Bottles</Nav.Link>
+            <Nav.Link href="signup">Sign up</Nav.Link>
+            <Nav.Link href="login">Login</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

@@ -7,7 +7,7 @@ export default function Users() {
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/users`)
       .then((response) => {
-        setUsersList(response.data['users']);
+        setUsersList(response.data);
       })
     }, [])
     

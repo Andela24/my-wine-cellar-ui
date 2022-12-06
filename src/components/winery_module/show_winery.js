@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Wineries() {
-  const [wineries_list, setWineriesList] = useState([]);
+  const [users_list, setWineriesList] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/wineries`)
       .then((response) => {
@@ -27,13 +27,13 @@ export default function Wineries() {
           </Table.Header>
 
           <Table.Body>
-            {wineries_list ? wineries_list.map((data) => {
+            {users_list.map((data) => {
               return (
               <Table.Row key={data.id}>
                 <Table.Cell>{data.id}</Table.Cell>
                 <Table.Cell>{data.name}</Table.Cell>
               </Table.Row>
-            )}) : 'Loading...'}
+            )})}
           </Table.Body>
         </Table>
       </div>
