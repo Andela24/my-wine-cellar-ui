@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export default function Wineries() {
-  const [users_list, setWineriesList] = useState([]);
+  const [wineries_list, setWineriesList] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/wineries`)
-      .then((response) => {
-        setWineriesList(response.data);
-      })
+    fetch('http://localhost:3000/api/v1/wineries',
+    {
+    	method: "GET",
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      setWineriesList(responseData)
+    })
+    .catch(error => console.warn(error));
     }, [])
     
     return (
@@ -27,7 +31,7 @@ export default function Wineries() {
           </Table.Header>
 
           <Table.Body>
-            {users_list.map((data) => {
+            {wineries_list.map((data) => {
               return (
               <Table.Row key={data.id}>
                 <Table.Cell>{data.id}</Table.Cell>

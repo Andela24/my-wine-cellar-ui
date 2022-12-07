@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export default function Bottles() {
   const [bottles_list, setBottlesList] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/bottles`)
-      .then((response) => {
-        setBottlesList(response.data);
-      })
-    }, [])
+    fetch(`http://localhost:3000/api/v1/bottles`,
+    {
+    	method: "GET",
+      headers: ({
+        'Authorization': localStorage.getItem('user_id'),
+      }),
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      setBottlesList(responseData)
+    })
+  }, [])
 
     const setData = (data) => {
       let { id, title, wine_type, grape_variety, vintage } = data;
@@ -21,17 +27,20 @@ export default function Bottles() {
       localStorage.setItem('Vintage', vintage)
     }
 
-    const getData = () => {
-      axios.get(`http://localhost:3000/api/v1/bottles`)
-        .then((response) => {
-          setBottlesList(response.data);
-        })
-      }
-
     const onDelete = (id) => {
-      axios.delete(`http://localhost:3000/api/v1/bottles/${id}`)
-      .then(() => {
-          getData();
+      fetch(`http://localhost:3000/api/v1/bottles/${id}`,
+      {
+        method: "DELETE",
+        headers: {'Authorization': localStorage.getItem('user_id')}
+      })
+      .then((response) => response.json())
+      .then((responseData) => {
+        if (responseData.message == 'Deleted Successfully'){
+          setBottlesList(bottles_list.filter((b) =>  b.id !== id ))
+        }
+        else {
+          console.log('Error in deleting')
+        }
       })
     }
     

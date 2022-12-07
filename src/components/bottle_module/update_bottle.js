@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import { useNavigate } from "react-router-dom"
-import axios from 'axios';
 
 export default function UpdateBottle() {
   const [id, setID] = useState(null);
@@ -20,15 +19,20 @@ export default function UpdateBottle() {
   }, []);
 
   const updateAPIData = () => {
-    axios.put(`http://localhost:3000/api/v1/bottles/${id}`, {
-      title,
-      wineType,
-      grapeVariety,
-      vintage
+    fetch(`http://localhost:3000/api/v1/bottles/${id}`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('user_id') },
+      body: JSON.stringify({
+        title: title,
+        wineType: wineType,
+        grapeVariety: grapeVariety,
+        vintage: vintage
+      }),
     })
     .then(() => {
       navigate(-1)
-    });
+    })
   }
 
   return (

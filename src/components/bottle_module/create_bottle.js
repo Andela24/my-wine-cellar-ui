@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom';
-import Select from 'react-select'
-import axios from 'axios';
 
 export default function UpdateBottle() {
   localStorage.removeItem('ID');
@@ -20,28 +18,40 @@ export default function UpdateBottle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/wineries`)
-      .then((response) => {
-        setOption(response.data.map(item => {
-          return {
-              label: item.name,
-              value: item.id     
-          }
-        }));
-      })
+
+    fetch(`http://localhost:3000/api/v1/wineries`,
+    {
+    	method: "GET",
+      headers: { 'Authorization': localStorage.getItem('user_id') }
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      setOption(responseData.map(item => {
+        return {
+            label: item.name,
+            value: item.id     
+        }
+      }));
+    })
     }, [])
 
   const createNewBottle = () => {
-    axios.post(`http://localhost:3000/api/v1/bottles`, {
-      title,
-      wineType,
-      grapeVariety,
-      vintage,
-      winery_id
+    fetch(`http://localhost:3000/api/v1/bottles`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('user_id') },
+      body: JSON.stringify({
+        title: title,
+        wineType: wineType,
+        grapeVariety: grapeVariety,
+        vintage: vintage,
+        winery_id: winery_id,
+        user_id: localStorage.getItem('user_id')
+      }),
     })
     .then(() => {
       navigate(-1)
-    });
+    })
   }
 
   return (

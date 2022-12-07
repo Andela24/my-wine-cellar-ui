@@ -2,30 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-export default function Wineries() {
-  const [wineries_list, setWineriesList] = useState([]);
+export default function Profile() {
+  const [user, setUser] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/wineries',
+    fetch(`http://localhost:3000/api/v1/me/${localStorage.getItem('user_id')}`,
     {
     	method: "GET",
-      headers: ({
-        'Authorization': localStorage.getItem('user_id'),
-      }),
-      
     })
     .then((response) => response.json())
     .then((responseData) => {
-      setWineriesList(responseData)
+      setUser(responseData)
     })
     .catch(error => console.warn(error));
     }, [])
     
     return (
       <div>
-        <Link to='/create_winery'>
-          <Button className='btn btn-primary'>Create Winery</Button>
-        </Link>
-
         <Table singleLine>
           <Table.Header>
             <Table.Row>
@@ -35,13 +27,10 @@ export default function Wineries() {
           </Table.Header>
 
           <Table.Body>
-            {wineries_list ? wineries_list.map((data) => {
-              return (
-              <Table.Row key={data.id}>
-                <Table.Cell>{data.id}</Table.Cell>
-                <Table.Cell>{data.name}</Table.Cell>
-              </Table.Row>
-            )}) : 'Loading...'}
+            <Table.Row key={user.id}>
+              <Table.Cell>{user.id}</Table.Cell>
+              <Table.Cell>{user.username}</Table.Cell>
+            </Table.Row>
           </Table.Body>
         </Table>
       </div>

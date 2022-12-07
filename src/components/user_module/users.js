@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'semantic-ui-react'
-import axios from 'axios';
 
 export default function Users() {
   const [users_list, setUsersList] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/users`)
-      .then((response) => {
-        setUsersList(response.data);
-      })
+    fetch('http://localhost:3000/api/v1/users',
+    {
+    	method: "GET",
+      headers: ({
+        'Authorization': localStorage.getItem('user_id'),
+      }),
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      setUsersList(responseData)
+    })
     }, [])
     
     return (

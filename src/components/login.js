@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const user_id = localStorage.getItem("user_id")
   
   const loginUser = () => {
-    axios.post(`http://localhost:3000/login`, {
-      username,
-      password
+
+    fetch(`http://localhost:3000/login/${user_id}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
     })
-    .then(() => {
-      navigate('/users')
-    });
+    .then((response) => response.json())
+    .then((responseData) => {
+      let abc = responseData.id
+      if (responseData.id != undefined) {
+        localStorage.setItem('user_id', abc)
+        navigate('/')
+      } else {
+        console.log('error in login')
+        navigate('/login')
+      }
+    })
   }
 
   return (
@@ -28,7 +42,7 @@ export default function Login() {
 
         <Form.Field>
           <label>Password</label>
-          <input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input placeholder='Password' type='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
         </Form.Field>
         
         <Button type='submit' onClick={loginUser}>Login</Button>
