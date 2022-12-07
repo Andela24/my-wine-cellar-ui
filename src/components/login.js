@@ -10,7 +10,7 @@ export default function Login() {
   
   const loginUser = () => {
 
-    fetch(`http://localhost:3000/login/${user_id}`,
+    fetch(`http://localhost:3000/login`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

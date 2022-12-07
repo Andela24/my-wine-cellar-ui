@@ -8,6 +8,7 @@ export default function Profile() {
     fetch(`http://localhost:3000/api/v1/me/${localStorage.getItem('user_id')}`,
     {
     	method: "GET",
+      headers: { 'Authorization': localStorage.getItem('user_id') }
     })
     .then((response) => response.json())
     .then((responseData) => {
