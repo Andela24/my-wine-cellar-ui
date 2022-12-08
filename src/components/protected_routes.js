@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../context/user_context";
 
 const ProtectedRoutes = ({ children }) => {
-  const user_id = localStorage.getItem("user_id")
+  const {currentUser} = useContext(UserContext)
 
-  if (!user_id) {
+  if (!currentUser) {
     return <Navigate to="/login" replace />;
   }
  

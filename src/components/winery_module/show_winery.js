@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Wineries() {
   const [wineries_list, setWineriesList] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/wineries',
+    fetch('http://localhost:3000/wineries',
     {
     	method: "GET",
     })

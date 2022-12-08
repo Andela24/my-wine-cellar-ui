@@ -19,7 +19,7 @@ export default function UpdateBottle() {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/api/v1/wineries`,
+    fetch(`http://localhost:3000/wineries`,
     {
     	method: "GET",
       headers: { 'Authorization': localStorage.getItem('user_id') }
@@ -36,7 +36,7 @@ export default function UpdateBottle() {
     }, [])
 
   const createNewBottle = () => {
-    fetch(`http://localhost:3000/api/v1/bottles`,
+    fetch(`http://localhost:3000/bottles`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('user_id') },

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Profile() {
   const [user, setUser] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/me/${localStorage.getItem('user_id')}`,
+    fetch(`http://localhost:3000/me/${localStorage.getItem('user_id')}`,
     {
     	method: "GET",
       headers: { 'Authorization': localStorage.getItem('user_id') }

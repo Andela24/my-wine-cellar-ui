@@ -10,21 +10,19 @@ import SignUP from './components/signup'
 import Login from './components/login'
 import Home from './components/home'
 import Profile from './components/user_module/profile'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import ProtectedRoutes from "./components/protected_routes";
 import Logout from './components/logout'
-
+import { UserContext } from "./context/user_context";
 function App() {
-  const [user, setUser]= useState({})
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState({})
-
+  const [currentUser, setCurrentUser] = useState();
   return (
-    <div>
-      <Header/>
+    <UserContext.Provider value={{currentUser, setCurrentUser}}>
+      
       <Router>
+      <Header/>
           <Routes>
-          <Route path="/" element={<Home user={user} loggedIn={loggedIn} currentUser={currentUser} />}  />
+          <Route path="/" element={<Home  />}  />
           <Route path='/users' element={<ProtectedRoutes><Users/></ProtectedRoutes>} />
           <Route path='/wineries' element={<ProtectedRoutes><Wineries/></ProtectedRoutes>} />
           <Route path='/bottles' element={<ProtectedRoutes><Bottles/></ProtectedRoutes>} />
@@ -37,7 +35,7 @@ function App() {
           <Route path='/logout' element={<ProtectedRoutes><Logout /></ProtectedRoutes>} />
         </Routes>
       </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 

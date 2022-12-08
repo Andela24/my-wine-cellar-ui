@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Bottles() {
   const [bottles_list, setBottlesList] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/bottles`,
+    fetch(`http://localhost:3000/bottles`,
     {
     	method: "GET",
       headers: ({
@@ -28,7 +28,7 @@ export default function Bottles() {
     }
 
     const onDelete = (id) => {
-      fetch(`http://localhost:3000/api/v1/bottles/${id}`,
+      fetch(`http://localhost:3000/bottles/${id}`,
       {
         method: "DELETE",
         headers: {'Authorization': localStorage.getItem('user_id')}

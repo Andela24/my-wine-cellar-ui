@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Home = ( {loggedIn, currentUser } ) => {
+const Home = () => {
   if(localStorage.getItem('user_id')) {
     return(
       <div className="Home">

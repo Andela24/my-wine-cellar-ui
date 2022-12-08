@@ -19,7 +19,7 @@ export default function UpdateBottle() {
   }, []);
 
   const updateAPIData = () => {
-    fetch(`http://localhost:3000/api/v1/bottles/${id}`,
+    fetch(`http://localhost:3000/bottles/${id}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('user_id') },

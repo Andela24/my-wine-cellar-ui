@@ -7,7 +7,7 @@ export default function CreateWinery() {
   const navigate = useNavigate();
   
   const createNewBottle = () => {
-    fetch('http://localhost:3000/api/v1/wineries',
+    fetch('http://localhost:3000/wineries',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('user_id') },
