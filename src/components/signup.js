@@ -7,7 +7,7 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const setCurrentUser = useContext(UserContext).setCurrentUser
+  const setCurrentUser = useContext(UserContext).setCurrentUser;
 
   const createNewUser = () => {
     fetch(`http://localhost:3000/signup`, {
@@ -21,11 +21,11 @@ export default function Signup() {
       .then((response) => {
         if (response.status !== 201) {
           throw new Error("HTTP status " + response.status);
-        } 
+        }
         return response.json();
       })
       .then((responseData) => {
-        setCurrentUser(responseData)
+        setCurrentUser(responseData);
         navigate("/me");
       })
       .catch((e) => {
@@ -35,29 +35,35 @@ export default function Signup() {
 
   return (
     <div>
-      <Form className="create-form">
-        <Form.Field>
+      <h1 className="text-center my-1">Sign Up</h1>
+
+      <Form className="create-form w-50 mx-auto p-4">
+        <Form.Field className="my-3">
           <label>Username</label>
           <input
             placeholder="Username"
             value={username}
+            className="form-control"
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Field>
 
-        <Form.Field>
+        <Form.Field className="my-3">
           <label>Password</label>
           <input
             placeholder="Password"
             type="password"
             value={password}
+            className="form-control"
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Field>
 
-        <Button type="submit" onClick={createNewUser}>
-          Sign up
-        </Button>
+        <div className="text-center my-1">
+          <Button type="submit" className="btn btn-primary" onClick={createNewUser}>
+            Sign up
+          </Button>
+        </div>
       </Form>
     </div>
   );

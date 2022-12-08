@@ -7,7 +7,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const setCurrentUser = useContext(UserContext).setCurrentUser
+  const setCurrentUser = useContext(UserContext).setCurrentUser;
 
   const loginUser = () => {
     fetch(`http://localhost:3000/login`, {
@@ -16,16 +16,16 @@ export default function Login() {
       body: JSON.stringify({
         username: username,
         password: password,
-      })
+      }),
     })
       .then((response) => {
         if (response.status !== 201) {
           throw new Error("HTTP status " + response.status);
-        } 
+        }
         return response.json();
       })
       .then((responseData) => {
-        setCurrentUser(responseData)
+        setCurrentUser(responseData);
         navigate("/");
       })
       .catch((e) => {
@@ -35,12 +35,14 @@ export default function Login() {
 
   return (
     <div>
-      <Form className="create-form">
+      <h1 className="text-center my-1">Login</h1>
+      <Form className="create-form w-50 mx-auto p-4">
         <Form.Field>
           <label>Username</label>
           <input
             placeholder="Username"
             value={username}
+            className="form-control"
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Field>
@@ -51,13 +53,16 @@ export default function Login() {
             placeholder="Password"
             type="password"
             value={password}
+            className="form-control"
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Field>
 
-        <Button type="submit" onClick={loginUser}>
-          Login
-        </Button>
+        <div className="text-center my-2">
+          <Button type="submit" className="btn btn-primary" onClick={loginUser}>
+            Login
+          </Button>
+        </div>
       </Form>
     </div>
   );
