@@ -22,8 +22,8 @@ export default function CreateWinery() {
 
   return (
     <div>
-      <Form className="create-form">
-        <Form.Field>
+      <Form className="create-form w-50 mx-auto">
+        <Form.Field className='my-2'>
           <label>Name</label>
           <input placeholder='Name' value={winery_name} className='form-control' onChange={(e) => setWineryName(e.target.value)}/>
         </Form.Field>

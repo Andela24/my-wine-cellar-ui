@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../context/user_context';
 
 
 const Home = () => {
-  if(localStorage.getItem('user_id')) {
+  const {currentUser} = useContext(UserContext)
+  if(currentUser) {
     return(
       <div className="Home">
         <h1 style={{ textAlign: 'center' }}> Welcome to Wine Cellar </h1>
