@@ -10,7 +10,7 @@ export default function CreateWinery() {
   
   const createNewBottle = () => {
     
-    fetch('http://localhost:3000/wineries',
+    fetch('/wineries',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': currentUser.id},

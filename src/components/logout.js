@@ -4,17 +4,25 @@ import { UserContext } from "../context/user_context";
 
 const Logout = () => {
   const navigate = useNavigate();
-  const {currentUser, setCurrentUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  fetch(`http://localhost:3000/logout/${currentUser.id}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    .then(() => {
-      setCurrentUser(null)
-      navigate('/')
-    })
+  fetch(`/logout`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: currentUser.id,
+    },
+    body: JSON.stringify({
+      id: currentUser.id,
+    }),
+  }).then((res) => {
+    if (res.status === 200) {
+      setCurrentUser(null);
+      navigate("/");
+    } else {
+      console.log("Coluld not logout ");
+    }
+  });
 };
 
 export default Logout;

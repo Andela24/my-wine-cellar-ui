@@ -13,7 +13,7 @@ export default function UpdateBottle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/bottles/${id}`, {
+    fetch(`/bottles/${id}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function UpdateBottle() {
   }, []);
 
   const updateAPIData = () => {
-    fetch(`http://localhost:3000/bottles/${id}`, {
+    fetch(`/bottles/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

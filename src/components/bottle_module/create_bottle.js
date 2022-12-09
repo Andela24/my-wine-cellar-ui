@@ -14,7 +14,7 @@ export default function CreateBottle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/wineries`, {
+    fetch(`/wineries`, {
       method: "GET",
       headers: { Authorization: currentUser.id },
     })
@@ -33,7 +33,7 @@ export default function CreateBottle() {
       console.log("winery id is empty")
       return;
     }
-    fetch(`http://localhost:3000/bottles`, {
+    fetch(`/bottles`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export default function CreateBottle() {
 
         <select onChange={(e) => setWineryId(e.target.value)} required>
           {options.map((option) => (
-            <option value={option.value}>{option.label}</option>
+            <option value={option.value} key={option.value}>{option.label}</option>
           ))}
         </select>
 

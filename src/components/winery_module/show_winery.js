@@ -10,7 +10,7 @@ export default function ShowWinery() {
   const { currentUser } = useContext(UserContext)
 
   const onDelete = (id) => {
-    fetch(`http://localhost:3000/bottles/${id}`, {
+    fetch(`/bottles/${id}`, {
       method: "DELETE",
       headers: { Authorization: currentUser.id },
     })
@@ -25,7 +25,7 @@ export default function ShowWinery() {
   };
 
   const getWineryData = () => {
-    fetch(`http://localhost:3000/wineries/${id}`,
+    fetch(`/wineries/${id}`,
     {
     	method: "GET",
       headers: {
@@ -72,16 +72,16 @@ export default function ShowWinery() {
                 <Table.Cell>{data.vintage}</Table.Cell>
                 <Table.Cell>
                   <Link to={`/wineries/${winery.id}/bottles/${data.id}`}>
-                    <Button >Show</Button>
+                    <Button className="btn btn-primary">Show</Button>
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
                   <Link to={`/update_bottle/${data.id}`}>
-                    <Button >Update</Button>
+                    <Button className="btn btn-warning">Update</Button>
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
-                  <Button onClick={() => onDelete(data.id)} >Delete</Button>
+                  <Button onClick={() => onDelete(data.id)} className="btn btn-danger">Delete</Button>
                 </Table.Cell>
               </Table.Row>
             );

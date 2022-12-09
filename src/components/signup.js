@@ -10,7 +10,7 @@ export default function Signup() {
   const setCurrentUser = useContext(UserContext).setCurrentUser;
 
   const createNewUser = () => {
-    fetch(`http://localhost:3000/signup`, {
+    fetch(`/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -10,7 +10,7 @@ export default function ShowBottle() {
   const [bottle, setBottle] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/bottles/${id}`, {
+    fetch(`/bottles/${id}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export default function ShowBottle() {
         setBottle(resbottle);
       });
   }, []);
-  console.log('helo,,', bottle)
+  
   return (
     <div className="d-flex justify-content-center py-5">
       {bottle && (

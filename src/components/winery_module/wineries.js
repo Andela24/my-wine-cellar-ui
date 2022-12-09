@@ -7,7 +7,7 @@ export default function Wineries() {
   const [wineries_list, setWineriesList] = useState([]);
   const {currentUser} = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/wineries", {
+    fetch("/wineries", {
       method: "GET",
       headers: {
         Authorization: currentUser.id,
