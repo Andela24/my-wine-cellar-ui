@@ -31,7 +31,6 @@ function App() {
       <Header/>
           <Routes>
           <Route path="/" element={<Home  />}  />
-          <Route path='/users' element={<ProtectedRoutes><Users/></ProtectedRoutes>} />
           <Route path='/wineries' element={<ProtectedRoutes><Wineries/></ProtectedRoutes>} />
           <Route path='/bottles' element={<ProtectedRoutes><Bottles/></ProtectedRoutes>} />
           <Route path='/update_bottle/:id' element={<ProtectedRoutes><UpdateBottle/></ProtectedRoutes>} />

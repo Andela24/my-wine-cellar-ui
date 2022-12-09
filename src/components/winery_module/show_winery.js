@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../../context/user_context';
 
 export default function ShowWinery() {
-  const id = useParams()
+  const {id} = useParams()
   const [winery, setWinery] = useState();
-  const {currentUser} = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
 
   const onDelete = (id) => {
     fetch(`http://localhost:3000/bottles/${id}`, {
@@ -17,14 +17,14 @@ export default function ShowWinery() {
       .then((response) => response.json())
       .then((responseData) => {
         if (responseData.message == "Deleted Successfully") {
-          get_winery_data()
+          getWineryData()
         } else {
           console.log("Error in deleting");
         }
       });
   };
 
-  const get_winery_data = () => {
+  const getWineryData = () => {
     fetch(`http://localhost:3000/wineries/${id}`,
     {
     	method: "GET",
@@ -41,7 +41,7 @@ export default function ShowWinery() {
   }
 
   useEffect(() => {
-    get_winery_data()
+    getWineryData()
     }, [])
     
     return (

@@ -1,39 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../context/user_context";
 
 export default function Profile() {
-  const [user, setUser] = useState([]);
-  useEffect(() => {
-    fetch(`http://localhost:3000/me/${localStorage.getItem('user_id')}`,
-    {
-    	method: "GET",
-      headers: { 'Authorization': localStorage.getItem('user_id') }
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      setUser(responseData)
-    })
-    .catch(error => console.warn(error));
-    }, [])
-    
-    return (
-      <div>
-        <Table singleLine>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>ID</Table.HeaderCell>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+  const { currentUser } = useContext(UserContext);
 
-          <Table.Body>
-            <Table.Row key={user.id}>
-              <Table.Cell>{user.id}</Table.Cell>
-              <Table.Cell>{user.username}</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table>
-      </div>
-    )
+  return (
+    <div className="w-50 mx-auto">
+      <h1 className="text-center my-3">Profile</h1>
+      <table className="table">
+        <tbody>
+          <tr>
+            <td>
+              <b>Username: </b>
+            </td>
+            <td>{currentUser.username}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 }

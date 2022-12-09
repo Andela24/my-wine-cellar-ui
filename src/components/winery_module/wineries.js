@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/user_context";
 
 export default function Wineries() {
   const [wineries_list, setWineriesList] = useState([]);
+  const {currentUser} = useContext(UserContext)
   useEffect(() => {
     fetch("http://localhost:3000/wineries", {
       method: "GET",
       headers: {
-        Authorization: localStorage.getItem("user_id"),
+        Authorization: currentUser.id,
       },
     })
       .then((response) => response.json())

@@ -14,7 +14,7 @@ export default function Header() {
         <Container>
           <Navbar.Brand ><NavLink to="/" className='nav-link'>Wine Celler</NavLink></Navbar.Brand>
           <Nav className="me-auto">
-            {currentUser && <NavLink className='nav-link' to="users">Profile</NavLink> }
+            {currentUser && <NavLink className='nav-link' to="/me">Profile</NavLink> }
             {currentUser && <NavLink className='nav-link' to="wineries">Wineries</NavLink> }
             {currentUser && <NavLink className='nav-link' to="bottles">Bottles</NavLink> }
             {!currentUser && <NavLink className='nav-link' to="signup">Sign up</NavLink> }
