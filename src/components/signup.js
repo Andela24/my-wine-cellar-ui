@@ -29,7 +29,7 @@ export default function Signup() {
         navigate("/me");
       })
       .catch((e) => {
-        console.log(e.message);
+        window.alert(e.message);
       });
   };
 

@@ -19,7 +19,7 @@ export default function ShowWinery() {
         if (responseData.message == "Deleted Successfully") {
           getWineryData()
         } else {
-          console.log("Error in deleting");
+          window.alert("Error in deleting");
         }
       });
   };
@@ -33,11 +33,16 @@ export default function ShowWinery() {
         Authorization: currentUser.id,
       },
     })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status !== 200) {
+        throw new Error("HTTP status " + response.status);
+      }
+      return response.json();
+    })
     .then((responseData) => {
       setWinery(responseData)
     })
-    .catch(error => console.warn(error));
+    .catch(error => window.alert(error));
   }
 
   useEffect(() => {

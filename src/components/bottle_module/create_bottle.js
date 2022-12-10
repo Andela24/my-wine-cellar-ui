@@ -31,7 +31,7 @@ export default function CreateBottle() {
 
   const createNewBottle = () => {
     if (!winery_id) {
-      console.log("winery id is empty");
+      window.alert("winery id is empty");
       return;
     }
     fetch(`/bottles`, {
@@ -59,7 +59,7 @@ export default function CreateBottle() {
         navigate(-1);
       })
       .catch((e) => {
-        console.log(e.message);
+        window.alert(e.message);
       });
   };
 

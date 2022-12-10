@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './components/header';
-import Users from './components/user_module/users'
 import Wineries from './components/winery_module/wineries'
 import Bottles from './components/bottle_module/bottles'
 import UpdateBottle from './components/bottle_module/update_bottle'
@@ -12,21 +11,13 @@ import SignUP from './components/signup'
 import Login from './components/login'
 import Home from './components/home'
 import Profile from './components/user_module/profile'
-import { useState, useEffect, createContext } from 'react'
 import ProtectedRoutes from "./components/protected_routes";
 import Logout from './components/logout'
-import { UserContext } from "./context/user_context";
+import { UserProvider } from "./context/user_context";
 function App() {
-  const [currentUser, setCurrentUserState] = useState(JSON.parse(localStorage.getItem("currentUser")));
-
-  const setCurrentUser = (user) => {
-    setCurrentUserState(user);
-    localStorage.setItem('currentUser', JSON.stringify(user))
-  }
-
+  
   return (
-    <UserContext.Provider value={{currentUser, setCurrentUser}}>
-      
+    <UserProvider>
       <Router>
       <Header/>
           <Routes>
@@ -44,7 +35,7 @@ function App() {
           <Route path='/logout' element={<ProtectedRoutes><Logout /></ProtectedRoutes>} />
         </Routes>
       </Router>
-    </UserContext.Provider>
+    </UserProvider>
   );
 }
 

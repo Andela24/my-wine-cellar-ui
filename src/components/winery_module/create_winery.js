@@ -29,7 +29,7 @@ export default function CreateWinery() {
         navigate(-1);
       })
       .catch((e) => {
-        console.log(e.message);
+        window.alert(e.message);
       });
   };
 

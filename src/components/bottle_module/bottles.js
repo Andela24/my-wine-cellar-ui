@@ -30,7 +30,7 @@ export default function Bottles() {
         if (responseData.message == "Deleted Successfully") {
           setBottlesList(bottles_list.filter((b) => b.id !== id));
         } else {
-          console.log("Error in deleting");
+          window.alert("Error in deleting");
         }
       });
   };

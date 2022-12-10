@@ -17,7 +17,7 @@ export default function Wineries() {
       .then((responseData) => {
         setWineriesList(responseData);
       })
-      .catch((error) => console.warn(error));
+      .catch((error) => window.alert(error));
   }, []);
 
   return (

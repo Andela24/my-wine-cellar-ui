@@ -20,7 +20,7 @@ const Logout = () => {
       setCurrentUser(null);
       navigate("/");
     } else {
-      console.log("Coluld not logout ");
+      window.alert("Coluld not logout ");
     }
   });
 };

@@ -7,7 +7,7 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const setCurrentUser = useContext(UserContext).setCurrentUser;
+  const {setCurrentUser} = useContext(UserContext);
   const loginUser = () => {
     fetch(`/login`, {
       method: "POST",
@@ -28,7 +28,7 @@ export default function Login() {
         navigate("/");
       })
       .catch((e) => {
-        console.log(e.message);
+        window.alert(e.message);
       });
   };
 
