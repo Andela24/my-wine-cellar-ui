@@ -43,6 +43,7 @@ export default function Bottles() {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
+            <Table.HeaderCell>Winery Name</Table.HeaderCell>
             <Table.HeaderCell>Title</Table.HeaderCell>
             <Table.HeaderCell>Wine type</Table.HeaderCell>
             <Table.HeaderCell>Grape Variety</Table.HeaderCell>
@@ -57,6 +58,7 @@ export default function Bottles() {
           {bottles_list.map((data) => {
             return (
               <Table.Row key={data.id}>
+                <Table.Cell>{data.winery.name}</Table.Cell>
                 <Table.Cell>{data.title}</Table.Cell>
                 <Table.Cell>{data.wine_type}</Table.Cell>
                 <Table.Cell>{data.grape_variety}</Table.Cell>
@@ -72,7 +74,12 @@ export default function Bottles() {
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
-                  <Button onClick={() => onDelete(data.id)} className="btn btn-danger">Delete</Button>
+                  <Button
+                    onClick={() => onDelete(data.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </Button>
                 </Table.Cell>
               </Table.Row>
             );

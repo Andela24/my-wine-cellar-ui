@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
+import { Link } from "react-router-dom";
 
 export default function CreateBottle() {
   const { currentUser } = useContext(UserContext);
@@ -30,7 +31,7 @@ export default function CreateBottle() {
 
   const createNewBottle = () => {
     if (!winery_id) {
-      console.log("winery id is empty")
+      console.log("winery id is empty");
       return;
     }
     fetch(`/bottles`, {
@@ -47,20 +48,31 @@ export default function CreateBottle() {
         winery_id: winery_id,
         user_id: currentUser.id,
       }),
-    }).then((res) => {
-      navigate(-1);
-    });
+    })
+      .then((response) => {
+        if (response.status !== 201) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        navigate(-1);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
   };
 
   return (
     <div>
-      <Form className="create-form">
+      <Form className="create-form w-50 mx-auto">
         <Form.Field>
           <label>Title</label>
           <input
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="form-control"
           />
         </Form.Field>
 
@@ -70,6 +82,7 @@ export default function CreateBottle() {
             placeholder="Wine Type"
             value={wineType}
             onChange={(e) => setWineType(e.target.value)}
+            className="form-control"
           />
         </Form.Field>
 
@@ -79,6 +92,7 @@ export default function CreateBottle() {
             placeholder="Grape variety"
             value={grapeVariety}
             onChange={(e) => setGrapeVariety(e.target.value)}
+            className="form-control"
           />
         </Form.Field>
 
@@ -88,18 +102,38 @@ export default function CreateBottle() {
             placeholder="Vintage"
             value={vintage}
             onChange={(e) => setVintage(e.target.value)}
+            className="form-control"
           />
         </Form.Field>
 
-        <select onChange={(e) => setWineryId(e.target.value)} required>
+        <select
+          onChange={(e) => setWineryId(e.target.value)}
+          required
+          className="form-control my-2"
+        >
           {options.map((option) => (
-            <option value={option.value} key={option.value}>{option.label}</option>
+            <option value={option.value} key={option.value}>
+              {option.label}
+            </option>
           ))}
         </select>
 
-        <Button type="submit" onClick={createNewBottle}>
-          Create
-        </Button>
+        <div className="text-center my-4">
+          <Button
+            type="submit"
+            onClick={createNewBottle}
+            className="btn btn-success w-50"
+          >
+            Create Bottle
+          </Button>
+        </div>
+
+        <div>
+          <span>Don't see your winery name? Create your: </span>{" "}
+          <Link to="/create_winery">
+            <Button className="btn btn-primary btn-sm">Create Winery</Button>
+          </Link>
+        </div>
       </Form>
     </div>
   );

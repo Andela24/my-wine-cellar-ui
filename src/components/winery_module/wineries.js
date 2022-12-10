@@ -7,7 +7,7 @@ export default function Wineries() {
   const [wineries_list, setWineriesList] = useState([]);
   const {currentUser} = useContext(UserContext)
   useEffect(() => {
-    fetch("/wineries", {
+    fetch("/my_wineries", {
       method: "GET",
       headers: {
         Authorization: currentUser.id,
@@ -22,9 +22,6 @@ export default function Wineries() {
 
   return (
     <div className="w-75 mx-auto py-3">
-      <Link to="/create_winery">
-        <Button className="btn btn-primary">Create Winery</Button>
-      </Link>
 
       <Table singleLine>
         <Table.Header>
