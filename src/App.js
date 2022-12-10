@@ -14,8 +14,9 @@ import Profile from './components/user_module/profile'
 import ProtectedRoutes from "./components/protected_routes";
 import Logout from './components/logout'
 import { UserProvider } from "./context/user_context";
-function App() {
-  
+import AllWineries from "./components/winery_module/all_wineries";
+
+function App() {  
   return (
     <UserProvider>
       <Router>
@@ -23,6 +24,7 @@ function App() {
           <Routes>
           <Route path="/" element={<Home  />}  />
           <Route path='/wineries' element={<ProtectedRoutes><Wineries/></ProtectedRoutes>} />
+          <Route path='/all_wineries' element={<ProtectedRoutes><AllWineries/></ProtectedRoutes>} />
           <Route path='/bottles' element={<ProtectedRoutes><Bottles/></ProtectedRoutes>} />
           <Route path='/update_bottle/:id' element={<ProtectedRoutes><UpdateBottle/></ProtectedRoutes>} />
           <Route path='/create_bottle' element={<ProtectedRoutes><CreateBottle/></ProtectedRoutes>} />
