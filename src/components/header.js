@@ -16,8 +16,8 @@ export default function Header() {
           <Nav className="me-auto">
             {currentUser && <NavLink className='nav-link' to="/me">Profile</NavLink> }
             {currentUser && <NavLink className='nav-link' to="wineries">My Wineries</NavLink> }
+            {currentUser && <NavLink className='nav-link' to="bottles">My Bottles</NavLink> }
             {currentUser && <NavLink className='nav-link' to="all_wineries">All Wineries</NavLink> }
-            {currentUser && <NavLink className='nav-link' to="bottles">Bottles</NavLink> }
             {!currentUser && <NavLink className='nav-link' to="signup">Sign up</NavLink> }
             {!currentUser && <NavLink className='nav-link' to="login">Login</NavLink> }
             {currentUser && <NavLink className='nav-link' to="logout">Logout</NavLink> }
