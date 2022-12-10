@@ -13,8 +13,8 @@ To install this application use the following steps:
  * bundle install
 * rails db:create
 * rails db:migrate
-# for example seed data
-rails db:seed
-rails server
+# For example seed data
+* rails db:seed
+* rails server
 
 By default, the server will run on port 3001 (leaving room to run node on 3000).
