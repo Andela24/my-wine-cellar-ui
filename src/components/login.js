@@ -25,7 +25,7 @@ export default function Login() {
       })
       .then((responseData) => {
         setCurrentUser(responseData);
-        navigate("/me");
+        navigate("/");
       })
       .catch((e) => {
         window.alert(e.message);
