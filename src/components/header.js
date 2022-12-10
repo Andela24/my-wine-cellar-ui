@@ -12,7 +12,7 @@ export default function Header() {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand ><NavLink to="/" className='nav-link'>Wine Celler</NavLink></Navbar.Brand>
+          <Navbar.Brand ><NavLink to="/" className='nav-link'>Wine Cellar</NavLink></Navbar.Brand>
           <Nav className="me-auto">
             {currentUser && <NavLink className='nav-link' to="/me">Profile</NavLink> }
             {currentUser && <NavLink className='nav-link' to="wineries">My Wineries</NavLink> }

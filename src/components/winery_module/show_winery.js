@@ -60,7 +60,7 @@ export default function ShowWinery() {
             <Table.HeaderCell>Title</Table.HeaderCell>
             <Table.HeaderCell>Wine type</Table.HeaderCell>
             <Table.HeaderCell>Grape Variety</Table.HeaderCell>
-            <Table.HeaderCell>vintage</Table.HeaderCell>
+            <Table.HeaderCell>Vintage</Table.HeaderCell>
             <Table.HeaderCell>Show Bottle</Table.HeaderCell>
             <Table.HeaderCell>Update Bottle</Table.HeaderCell>
             <Table.HeaderCell>Delete Bottle</Table.HeaderCell>
