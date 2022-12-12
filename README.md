@@ -19,18 +19,25 @@ Signup, Login, and Logout. Each user's data is password protected using bcrypt.
 * Delete the bottle
 
 # Installation
-First, fork and clone this repository into a local directory. Once you navigate into the correct file, run:
+Navigate to the main directory. Before you begin, you will want to populate the database with some fake data of things to rate. To do that, enter in your terminal:
 
-Backend:
+* $rails db:migrate 
+* bundle install
 
-## bundle install
 to install the required gems
 
 * rails s
 will run the server on port http://localhost:3000
 
-Frontend:
-* npm start --prefix client
-will start the frontend on port http://localhost:4000
+## Frontend:
+Navigate to the client folder and enter:
+* npm start
 
+ This will launch react server and serve the app on localhost/4000.
 
+## Technologies
+
+This system uses Ruby on Rails with a postgres server for the backend as well as React with React Router on the frontend.
+
+## Demo Video
+If you would like to see this project in action, check out this demo video:
