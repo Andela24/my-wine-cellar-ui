@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 import Header from './components/header';
 import Wineries from './components/winery_module/wineries'
 import Bottles from './components/bottle_module/bottles'
@@ -16,7 +17,27 @@ import Logout from './components/logout'
 import { UserProvider } from "./context/user_context";
 import AllWineries from "./components/winery_module/all_wineries";
 
-function App() {  
+const App = () => {  
+//   const [user, setUser]= useState({})
+//   const [loggedIn, setLoggedIn] = useState(false)
+//   const [ errors, setErrors ] = useState(false)
+
+//   useEffect(()=> {
+//     fetch('/me')
+//     .then(resp => {
+//         if(resp.ok){
+//             resp.json().then(data => {
+//                setUser(data)
+//                data.error? setLoggedIn(false) : setLoggedIn(true)
+//             })
+//         }else {
+//             resp.json().then(data => setErrors(data.error))
+//         }
+//     })
+   
+// }, [])
+
+
   return (
     <UserProvider>
       <Router>

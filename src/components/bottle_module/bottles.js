@@ -8,12 +8,7 @@ export default function Bottles() {
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/bottles`, {
-      method: "GET",
-      headers: {
-        Authorization: currentUser.id,
-      },
-    })
+    fetch('/bottles')
       .then((response) => response.json())
       .then((responseData) => {
         setBottlesList(responseData);
@@ -21,7 +16,7 @@ export default function Bottles() {
   }, []);
 
   const onDelete = (id) => {
-    fetch(`http://localhost:3000/bottles/${id}`, {
+    fetch(`/bottles/${id}`, {
       method: "DELETE",
       headers: { Authorization: currentUser.id },
     })

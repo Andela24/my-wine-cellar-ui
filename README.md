@@ -19,9 +19,10 @@ Signup, Login, and Logout. Each user's data is password protected using bcrypt.
 * Delete the bottle
 
 # Installation
+## Backend
 Navigate to the main directory. Before you begin, you will want to populate the database with some fake data of things to rate. To do that, enter in your terminal:
 
-* $rails db:migrate 
+* rails db:migrate 
 * bundle install
 
 to install the required gems
@@ -33,7 +34,7 @@ will run the server on port http://localhost:3000
 Navigate to the client folder and enter:
 * npm start
 
- This will launch react server and serve the app on localhost/4000.
+ This will launch react server and serve the app on http://localhost:4000
 
 ## Technologies
 

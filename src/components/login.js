@@ -3,11 +3,12 @@ import { Button, Form } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/user_context";
 
-export default function Login() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const {setCurrentUser} = useContext(UserContext);
+
   const loginUser = () => {
     fetch(`/login`, {
       method: "POST",
@@ -66,3 +67,4 @@ export default function Login() {
     </div>
   );
 }
+export default Login
