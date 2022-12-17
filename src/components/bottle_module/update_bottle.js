@@ -14,18 +14,18 @@ export default function UpdateBottle() {
 
   useEffect(() => {
     fetch(`/bottles/${id}`, {
-      method: "get",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: currentUser.id,
       },
     })
       .then((res) => res.json())
-      .then((resData) => {
-        setTitle(resData.title);
-        setWineType(resData.wine_type);
-        setVintage(resData.vintage);
-        setGrapeVariety(resData.grape_variety);
+      .then((data) => {
+        setTitle(data.title);
+        setWineType(data.wine_type);
+        setVintage(data.vintage);
+        setGrapeVariety(data.grape_variety);
       });
   }, []);
 
