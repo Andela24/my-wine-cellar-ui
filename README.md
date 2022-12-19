@@ -12,8 +12,10 @@ Signup, Login, and Logout. Each user's data is password protected using bcrypt.
 
 * See all available Wineries in the cellar
 * Show the bottles from chosen winery
+* See your bottle collection
+* See your personal wineries
 * Create New Winery 
-* Create new bottle
+* Create New bottle
 * Update bottle
 * Submit new bottle
 * Delete the bottle
@@ -42,3 +44,4 @@ This system uses Ruby on Rails with a postgres server for the backend as well as
 
 ## Demo Video
 If you would like to see this project in action, check out this demo video:
+https://youtu.be/TTbTg1AlB3k

@@ -18,9 +18,25 @@ import { UserProvider } from "./context/user_context";
 import AllWineries from "./components/winery_module/all_wineries";
 
 const App = () => {  
-//   const [user, setUser]= useState({})
+//   const [currentUser, setCurrentUser]= useState({});
 //   const [loggedIn, setLoggedIn] = useState(false)
-//   const [ errors, setErrors ] = useState(false)
+//   const [errors, setErrors] = useState(false)
+//   const [loading, setLoading]= useState(true);
+
+//   const handleCurrentUser = (user) => {
+//     if(user.username) {
+//       setCurrentUser(user);
+//       setLoggedIn(true);
+//       setLoading(false);
+   
+//     }
+//   }
+
+//   const logoutCurrentUser = () => {
+//     setCurrentUser({});
+//     setLoggedIn(false);
+//     setLoading(false);
+//   }
 
 
 
@@ -29,7 +45,7 @@ const App = () => {
 //     .then(resp => {
 //         if(resp.ok){
 //             resp.json().then(data => {
-//                setUser(data)
+//                setCurrentUser(data)
 //                data.error? setLoggedIn(false) : setLoggedIn(true)
 //             })
 //         }else {
@@ -43,7 +59,7 @@ const App = () => {
   return (
     <UserProvider>
       <Router>
-      <Header/>
+      <Header />
           <Routes>
           <Route path="/" element={<Home  />}  />
           <Route path='/wineries' element={<ProtectedRoutes><Wineries/></ProtectedRoutes>} />
