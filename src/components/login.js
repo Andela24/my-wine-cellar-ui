@@ -8,7 +8,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const {setCurrentUser} = useContext(UserContext);
-  // const setCurrentUser = useContext(UserContext).setCurrentUser;
 
   const loginUser = () => {
     fetch(`/login`, {
