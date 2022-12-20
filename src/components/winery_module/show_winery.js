@@ -3,6 +3,7 @@ import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../context/user_context';
+import { headers } from '../../Globals';
 
 export default function ShowWinery() {
   const {id} = useParams()
@@ -12,7 +13,7 @@ export default function ShowWinery() {
   const onDelete = (id) => {
     fetch(`/bottles/${id}`, {
       method: "DELETE",
-      headers: { Authorization: currentUser.id },
+      headers: headers
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -28,10 +29,7 @@ export default function ShowWinery() {
     fetch(`/wineries/${id}`,
     {
     	method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers
     })
     .then((response) => {
       if (response.status !== 200) {

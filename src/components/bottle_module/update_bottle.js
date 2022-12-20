@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
+import { headers } from "../../Globals";
 
 export default function UpdateBottle() {
   const { id } = useParams();
@@ -15,10 +16,7 @@ export default function UpdateBottle() {
   useEffect(() => {
     fetch(`/bottles/${id}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers
     })
       .then((res) => res.json())
       .then((data) => {
@@ -32,10 +30,7 @@ export default function UpdateBottle() {
   const updateAPIData = () => {
     fetch(`/bottles/${id}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers,
       body: JSON.stringify({
         title: title,
         wineType: wineType,

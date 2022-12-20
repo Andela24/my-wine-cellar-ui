@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
+import { headers } from "../../Globals";
 
 export default function Bottles() {
   const [bottles_list, setBottlesList] = useState([]);
@@ -10,9 +11,7 @@ export default function Bottles() {
   useEffect(() => {
     fetch(`/bottles`, {
       method: "GET",
-      headers: {
-        Authorization: currentUser.id,
-      },
+      headers: headers
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -23,7 +22,7 @@ export default function Bottles() {
   const onDelete = (id) => {
     fetch(`/bottles/${id}`, {
       method: "DELETE",
-      headers: { Authorization: currentUser.id },
+      headers: headers
     })
       .then((response) => response.json())
       .then((responseData) => {

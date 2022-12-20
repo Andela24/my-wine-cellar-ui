@@ -18,43 +18,6 @@ import { UserProvider } from "./context/user_context";
 import AllWineries from "./components/winery_module/all_wineries";
 
 const App = () => {  
-//   const [currentUser, setCurrentUser]= useState({});
-//   const [loggedIn, setLoggedIn] = useState(false)
-//   const [errors, setErrors] = useState(false)
-//   const [loading, setLoading]= useState(true);
-
-//   const handleCurrentUser = (user) => {
-//     if(user.username) {
-//       setCurrentUser(user);
-//       setLoggedIn(true);
-//       setLoading(false);
-   
-//     }
-//   }
-
-//   const logoutCurrentUser = () => {
-//     setCurrentUser({});
-//     setLoggedIn(false);
-//     setLoading(false);
-//   }
-
-
-
-//   useEffect(()=> {
-//     fetch('/me')
-//     .then(resp => {
-//         if(resp.ok){
-//             resp.json().then(data => {
-//                setCurrentUser(data)
-//                data.error? setLoggedIn(false) : setLoggedIn(true)
-//             })
-//         }else {
-//             resp.json().then(data => setErrors(data.error))
-//         }
-//     })
-   
-// }, [])
-
 
   return (
     <UserProvider>

@@ -1,17 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../context/user_context";
+import { headers } from "../../Globals";
 
 export default function Wineries() {
   const [wineries_list, setWineriesList] = useState([]);
-  const {currentUser} = useContext(UserContext)
   useEffect(() => {
     fetch("/my_wineries", {
       method: "GET",
-      headers: {
-        Authorization: currentUser.id,
-      },
+      headers: headers,
     })
       .then((response) => response.json())
       .then((responseData) => {

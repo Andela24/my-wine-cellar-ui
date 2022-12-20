@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/user_context";
+import {headers} from '../Globals'
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -8,13 +9,7 @@ const Logout = () => {
 
   fetch(`/logout`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: currentUser.id,
-    },
-    body: JSON.stringify({
-      id: currentUser.id,
-    }),
+    headers: headers
   }).then((res) => {
     if (res.status === 200) {
       setCurrentUser(null);

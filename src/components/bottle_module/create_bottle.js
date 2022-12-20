@@ -3,6 +3,7 @@ import { Button, Form } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
 import { Link } from "react-router-dom";
+import { headers } from "../../Globals";
 
 export default function CreateBottle() {
   const { currentUser } = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function CreateBottle() {
   useEffect(() => {
     fetch(`/wineries`, {
       method: "GET",
-      headers: { Authorization: currentUser.id },
+      headers: headers
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -36,10 +37,7 @@ export default function CreateBottle() {
     }
     fetch(`/bottles`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers,
       body: JSON.stringify({
         title: title,
         wineType: wineType,

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
 import Card from "react-bootstrap/Card";
 import { Table } from "semantic-ui-react";
+import { headers } from "../../Globals";
 
 export default function ShowBottle() {
   const { id } = useParams();
@@ -12,10 +13,7 @@ export default function ShowBottle() {
   useEffect(() => {
     fetch(`/bottles/${id}`, {
       method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers
     })
       .then((res) => res.json())
       .then((resbottle) => {

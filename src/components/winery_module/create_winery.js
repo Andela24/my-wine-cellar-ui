@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user_context";
+import { headers } from "../../Globals";
 
 export default function CreateWinery() {
   const [wineryName, setWineryName] = useState("");
@@ -11,10 +12,7 @@ export default function CreateWinery() {
   const createNewBottle = () => {
     fetch("/wineries", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: currentUser.id,
-      },
+      headers: headers,
       body: JSON.stringify({
         winery_name: wineryName,
       }),
