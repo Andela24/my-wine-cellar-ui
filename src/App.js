@@ -8,7 +8,7 @@ import CreateBottle from './components/bottle_module/create_bottle'
 import CreateWinery from './components/winery_module/create_winery'
 import ShowWinery from "./components/winery_module/show_winery";
 import ShowBottle from "./components/bottle_module/show_bottle";
-import SignUP from './components/signup'
+import SignUp from './components/signup'
 import Login from './components/login'
 import Home from './components/home'
 import Profile from './components/user_module/profile'
@@ -33,7 +33,7 @@ const App = () => {
           <Route path='/wineries/:winery_id/bottles/:id' element={<ProtectedRoutes><ShowBottle/></ProtectedRoutes>} />
           <Route path='/wineries/:id' element={<ProtectedRoutes><ShowWinery/></ProtectedRoutes>} />
           <Route path='/create_winery' element={<ProtectedRoutes><CreateWinery/></ProtectedRoutes>} />
-          <Route path='/signup' element={<SignUP/>} />
+          <Route path='/signup' element={<SignUp/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/me' element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
           <Route path='/logout' element={<ProtectedRoutes><Logout /></ProtectedRoutes>} />
