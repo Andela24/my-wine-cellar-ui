@@ -14,10 +14,7 @@ export default function UpdateBottle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/bottles/${id}`, {
-      method: "GET",
-      headers: headers
-    })
+    fetch(`/bottles/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);

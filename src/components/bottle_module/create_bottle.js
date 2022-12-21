@@ -16,10 +16,7 @@ export default function CreateBottle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/wineries`, {
-      method: "GET",
-      headers: headers
-    })
+    fetch('/wineries')
       .then((response) => response.json())
       .then((responseData) => {
         let optionsData = responseData.map((item) => {

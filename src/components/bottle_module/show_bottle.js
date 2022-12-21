@@ -11,10 +11,7 @@ export default function ShowBottle() {
   const [bottle, setBottle] = useState(null);
 
   useEffect(() => {
-    fetch(`/bottles/${id}`, {
-      method: "get",
-      headers: headers
-    })
+    fetch(`/bottles/${id}`)
       .then((res) => res.json())
       .then((resbottle) => {
         setBottle(resbottle);
@@ -45,7 +42,7 @@ export default function ShowBottle() {
                   <Table.Cell>{bottle.vintage}</Table.Cell>
                 </Table.Row>
                 <Table.Row >
-                  <Table.Cell><b>Wine Name: </b></Table.Cell>
+                  <Table.Cell><b>Winery Name: </b></Table.Cell>
                   <Table.Cell>{bottle.winery.name}</Table.Cell>
                 </Table.Row>
               </Table.Body>

@@ -7,10 +7,7 @@ import { headers } from "../../Globals";
 export default function AllWineries() {
   const [wineries_list, setWineriesList] = useState([]);
   useEffect(() => {
-    fetch("/wineries", {
-      method: "GET",
-      headers: headers
-    })
+    fetch("/wineries")
       .then((response) => response.json())
       .then((responseData) => {
         setWineriesList(responseData);

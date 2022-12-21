@@ -9,10 +9,7 @@ export default function Bottles() {
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`/bottles`, {
-      method: "GET",
-      headers: headers
-    })
+    fetch('/bottles')
       .then((response) => response.json())
       .then((responseData) => {
         setBottlesList(responseData);
