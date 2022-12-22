@@ -23,7 +23,7 @@ Signup, Login, and Logout. Each user's data is password protected using bcrypt.
 # Installation
 
 * Clone this repo 
-    git@github.com:Andela24/my-wine-cellar-ui.git
+    [git@github.com:Andela24/my-wine-cellar-ui.git]
 * cd my-wine-cellar-ui
 * Run the following commands in the project directory:
 * npm install
