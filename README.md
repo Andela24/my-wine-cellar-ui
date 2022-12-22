@@ -21,22 +21,18 @@ Signup, Login, and Logout. Each user's data is password protected using bcrypt.
 * Delete the bottle
 
 # Installation
-## Backend
-Navigate to the main directory. Before you begin, you will want to populate the database with some fake data of things to rate. To do that, enter in your terminal:
 
-* rails db:migrate 
-* bundle install
-
-to install the required gems
-
-* rails s
-will run the server on port http://localhost:3000
-
-## Frontend:
-Navigate to the client folder and enter:
+* Clone this repo 
+    git@github.com:Andela24/my-wine-cellar-ui.git
+* cd my-wine-cellar-ui
+* Run the following commands in the project directory:
+* npm install
 * npm start
 
- This will launch react server and serve the app on http://localhost:4000
+ This should run the app on port http://localhost:3000 or open http://localhost:3000 to view it in your browser. (the backend will run on port 3001)
+
+ Follow directions for installation of backend
+[https://github.com/Andela24/my-wine-cellar/tree/dev]
 
 ## Technologies
 
