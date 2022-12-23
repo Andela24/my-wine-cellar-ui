@@ -34,7 +34,10 @@ export default function UpdateBottle() {
         grapeVariety: grapeVariety,
         vintage: vintage,
       }),
-    }).then(() => {
+    }).then((res) => {
+      if(res.status !== 200) {
+        window.alert('You are not authroized to edit this bottle')
+      }
       navigate(-1);
     });
   };
